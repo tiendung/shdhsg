@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @users = User.all.limit(5)
+    @users = User.desc(:awesome)
   end
 end

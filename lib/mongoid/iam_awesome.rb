@@ -13,6 +13,7 @@ module Mongoid
       embeds_many :awesomenesses
       field :awesome, :type => Integer, :default => 0
       field :credit, :type => Integer, :default => Settings.default_credit
+      index [:awesome, -1]
     end
     
     module ClassMethods
