@@ -27,13 +27,13 @@ class UsersController < ApplicationController
       usernames = extract_mentioned_screen_names(reason).uniq
       if usernames.nil? || usernames.size == 0
         flash[:error] = "Invalid input for receivers of awesomeness"
-        redirect_to :declare
+        render 'declare'
       elsif usernames.size > current_user.credit
-        flash[:error] = "You can only give maximum #{current_user.credits} awesomeness to others"
-        redirect_to :declare
-      elsif reason.size > 144
+        flash[:error] = "You can only give maximum #{current_user.credit} awesomeness to others"
+        render 'declare'
+      elsif reason.size > 134
         flash[:error] = "Message is too long"
-        redirect_to :declare
+        render 'declare'
       else
         #backend calculation
         usernames.each do |username|
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
             redirect_to :root
           else
             flash[:error] = result.to_s.humanize
-            redirect_to :declare
+            render 'declare'
           end
         end
       end 
