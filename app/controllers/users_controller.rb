@@ -25,15 +25,18 @@ class UsersController < ApplicationController
       
       #Check and verify the tweet
       usernames = extract_mentioned_screen_names(reason).uniq
-      if usernames.nil? || usernames.size == 0
-        flash[:error] = "Invalid input for receivers of awesomeness"
-        render 'declare'
+      if current_user.credit == 0
+        flash[:notice] = "You dont have any credit left, would you like to buy some?"
+        redirect_to users_declare_path
+      elsif usernames.nil? || usernames.size == 0
+        flash[:notice] = "Invalid input for receivers of awesomeness"
+        redirect_to users_declare_path
       elsif usernames.size > current_user.credit
-        flash[:error] = "You can only give maximum #{current_user.credit} awesomeness to others"
-        render 'declare'
+        flash[:notice] = "You can only give maximum #{current_user.credit} awesomeness to others"
+        redirect_to users_declare_path
       elsif reason.size > 134
-        flash[:error] = "Message is too long"
-        render 'declare'
+        flash[:notice] = "Message is too long"
+        redirect_to users_declare_path
       else
         #backend calculation
         usernames.each do |username|
@@ -45,18 +48,20 @@ class UsersController < ApplicationController
           if result == true
             #Post the tweet on user's twitter page
             message = reason + " #tooa"
-            current_user.twitter.update(message)
+            begin
+              current_user.twitter.update(message)
+            rescue => e
+              logger.info e
+            end
             #redirect to main page
             redirect_to :root
           else
-            flash[:error] = result.to_s.humanize
-            render 'declare'
+            flash[:notice] = result.to_s.humanize
+            redirect_to users_declare_path
           end
         end
-      end 
-    elsif request.get?
-      render 'declare'    
-    end
+      end     
+    end # end of request.post?
   end
   
 end

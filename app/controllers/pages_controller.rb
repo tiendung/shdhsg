@@ -9,4 +9,8 @@ class PagesController < ApplicationController
       offset += i
     end
   end
+  
+  def buy_awesomeness
+    
+  end
 end

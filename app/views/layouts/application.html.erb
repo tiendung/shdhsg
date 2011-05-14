@@ -15,6 +15,7 @@
 <body>
 <div id="navigation">
 	<div class="wrap container_16">
+		<%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
 		<%= render :partial => 'shared/user_nav' %>
 	</div>
 </div>

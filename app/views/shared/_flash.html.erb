@@ -1,0 +1,10 @@
+<div id="flash_info">
+<% if !flash.nil? %>
+	<% if flash[:notice] %>
+		<p class="warning"><%= flash[:notice] %></p>
+	<% end %>
+	<% if flash[:error] %>
+	    <p class="warning"><%= flash[:error] %></p>
+	<% end %>
+<% end %>
+</div>

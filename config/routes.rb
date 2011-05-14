@@ -4,6 +4,7 @@ Shdhsg::Application.routes.draw do
   root :to => 'pages#home'
 
   match 'users/declare' => 'users#declare'
+  match 'buy_awesomeness' => 'pages#buy_awesomeness'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
