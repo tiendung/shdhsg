@@ -45,7 +45,6 @@ class UsersController < ApplicationController
     redirect_to :root
     elsif request.get?
       render 'declare'
-    
     end
   end
   

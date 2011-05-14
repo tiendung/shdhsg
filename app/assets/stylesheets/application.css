@@ -3,11 +3,22 @@
  *= require_self
  *= require_tree . 
 */
+body{
+    font-family: Helvetica, Arial;
+}
 #navigation{
     width: 100%;
     text-align: right;
-    background: #520000;
+    background: #211E1A;
     padding: 5px 0px 0px 0px;
+    color: #FFFFFF;
+}
+#navigation a{
+    color: #FFFFFF;
+}
+#navigation a:hover{
+    background: #FFFFFF;
+    color: #211E1A;
 }
 #navigation img{
     padding: 0px;
@@ -38,14 +49,29 @@
     margin: 0px 5px 0px 5px;
     color: #D2560E;
 }
-.wrap{
-    
+.call_to_action{
+    margin: 30px 0px 30px 0px;
+    text-align: center;
+}
+.call_to_action a{
+    font-size: 2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #7D0000;
+    color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    border: 5px solid #211E1A;
+}
+.call_to_action a:hover{
+    background: #520000;
 }
 #the_order{
     text-align: center;
 }
 #the_order li{
-    margin-bottom: 10px;
+    margin: 0px 0px 10px 0px;
     list-style: none;
 }
 #the_order div{
@@ -61,4 +87,29 @@
     width: 48px;
     height: 48px;
     margin-top: 13px;
+}
+#declaration_of_awesomeness textarea{
+    width: 470px;
+    height: 120px;
+    font-size: 1.5em;
+    padding: 10px;
+}
+#declaration_of_awesomeness h2{
+    font-size: 2em;
+    margin: 10px;
+}
+#declaration_of_awesomeness p{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px;
+}
+#declaration_of_awesomeness p.warning{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px;
+    background: #211E1A;
+    color: #FFFFFF;
+}
+#declaration_of_awesomeness{
+    text-align: center;
 }
