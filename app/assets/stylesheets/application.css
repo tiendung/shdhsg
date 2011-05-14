@@ -41,3 +41,24 @@
 .wrap{
     
 }
+#the_order{
+    text-align: center;
+}
+#the_order li{
+    margin-bottom: 10px;
+    list-style: none;
+}
+#the_order div{
+    display: inline-block;
+    background-image: url(twitter_background.png);
+    width: 70px;
+    height: 74px;
+}
+#the_order div:hover{
+    background-image: url(twitter_background_hover.png);
+}
+#the_order div img{
+    width: 48px;
+    height: 48px;
+    margin-top: 13px;
+}
