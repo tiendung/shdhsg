@@ -1,0 +1,14 @@
+<table>
+  <% count = 0 %>
+  <% 1.upto(Settings.pyramid_height).each do |i| %>
+    <tr>
+      <% 1.upto(Settings.pyramid_height).each do |j| %>
+        <td>
+          <% if j <= i; count += 1 %>
+            <%= "#{count}" %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

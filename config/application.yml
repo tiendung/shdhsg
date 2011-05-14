@@ -1,0 +1,11 @@
+defaults: &defaults
+  pyramid_height: 15
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
