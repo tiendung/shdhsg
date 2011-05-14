@@ -16,6 +16,7 @@ gem 'SystemTimer', :platforms => :ruby_18, :require => nil
 gem 'settingslogic'
 gem 'inherited_resources'
 gem 'devise'
+gem 'oa-oauth'
 gem 'dragonfly'
 gem 'rack-cache', :require => 'rack/cache'
 
