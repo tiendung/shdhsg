@@ -49,9 +49,9 @@ module Mongoid
     def like(other, reason)
       normalize_reason(reason)
       
-      if self == other || self.credit == 0 || liked?(other, reason)
-        return false
-      end
+      return :cannot_like_self if self == other
+      return :no_credits_left if self.credit == 0
+      return :cannot_like_for_the_same_reason if liked?(other, reason)
       
       unless self.admin?
         self.credit -= 1
@@ -65,7 +65,7 @@ module Mongoid
         :reason => reason
       )
       other.save
-      other
+      true
     end
   end
 end

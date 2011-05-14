@@ -27,12 +27,12 @@ describe User do
   end
 
   it 'I cannot like myself :(' do
-    @i.like(@i, 'what ever reason').should == false
+    @i.like(@i, 'what ever reason').should == :cannot_like_self
   end
   
   it 'I like you first time' do
-    @i.like(@u, 'You are beautiful')
-    @i.like(@u, 'You are beautiful').should == false
+    @i.like(@u, 'You are beautiful').should == true
+    @i.like(@u, 'You are beautiful').should == :cannot_like_for_the_same_reason
     @i.liked?(@u, 'You Are  beautiful').should == true
     @i.liked?(@u, '  You  are  kiNdneSs  ').should == false
     @i.liked(@u).map(&:reason).sort.should == ['you are beautiful']
@@ -53,8 +53,8 @@ describe User do
   end
 
   it 'I cannot like you third time, I have no credits left' do
-    @i.like(@u, 'I love you so much !!!').should == false
-    10.times { @i.like(@u, 'a'*rand(100)).should == false }
+    @i.like(@u, 'I love you so much !!!').should == :no_credits_left
+    1.upto(10).each { |x| @i.like(@u, 'a'*x).should == :no_credits_left }
   end
   
   it 'He like you too' do
