@@ -36,7 +36,8 @@ class UsersController < ApplicationController
         redirect_to :declare
       else
         #backend calculation
-        usernames.each do |receiver|
+        usernames.each do |username|
+          receiver = User.where(:twitter_id => username).first
           result = current_user.like(receiver, reason)
           if result == true
             #Post the tweet on user's twitter page
