@@ -5,7 +5,8 @@
       <% 1.upto(Settings.pyramid_height).each do |j| %>
         <td class="<%= j <= i ? 'show' : 'hide' %>">
           <% if j <= i; count += 1 %>
-            <%= "#{count}" %>
+            <%#= "#{count}" %>
+            <%= "@#{User.all[count - 1].twitter_id[0..10]}" if count - 1 < User.count %>
           <% end %>
         </td>
       <% end %>

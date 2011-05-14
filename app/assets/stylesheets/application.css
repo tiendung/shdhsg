@@ -16,8 +16,8 @@ td.show {
  border-width: 1px;
  border-color: #000;
  border-style: solid;
- width: 70px; 
- height: 70px;
+ width: 100px; 
+ height: 100px;
  color: gray;
  text-align: center;
 }
