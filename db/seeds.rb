@@ -2,5 +2,6 @@
   if User.where(:twitter_id => shdhsg_attendee_twitter_id).count == 0
     u = User.new(:twitter_id => shdhsg_attendee_twitter_id)
     u.save(:validate => false)
+    puts "#{shdhsg_attendee_twitter_id} created"
   end
 end
