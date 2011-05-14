@@ -5,6 +5,4 @@ class User
   # :lockable, :timeoutable and :omniauthable, :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_one :card
 end
