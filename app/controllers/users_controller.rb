@@ -1,10 +1,19 @@
 class UsersController < ApplicationController
   def twitter
     #TODO: create user and login
-  end
-  
-  def failure
-    #TODO: log report failure
+    auth_hash = request.env['omniauth.auth']
+    twitter_id = auth_hash[:user_info][:nickname]
+    user = User.where(:twitter_id => twitter_id).first || User.new
+    user.twitter_id = twitter_id
+    user.user_info = auth_hash
+    user.save!
+    p "User #{user.inspect}"
+    sign_in("User", user)
     redirect_to :root
   end
+  
+  # def failure
+  #   p "Fail to log in"
+  #   redirect_to :root
+  # end
 end
