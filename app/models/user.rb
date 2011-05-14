@@ -14,6 +14,7 @@ class User
   field :twitter_info, :type => Hash
   field :twitter_id
   field :avatar_url
+  field :credentials, :type => Hash
   validates_presence_of :twitter_id
   
   before_save :update_info_via_twitter
@@ -26,13 +27,19 @@ class User
     end
   end
   
-  # def twitter
-  #   unless @twitter_user
-  #     provider = self.authentications.find_by_provider('twitter')
-  #     @twitter_user = Twitter::Client.new(:oauth_token => provider.token, :oauth_token_secret => provider.secret) rescue nil
-  #   end
-  #   @twitter_user
-  # end
+  def twitter
+    unless @twitter_user
+      p "Inside"
+      Twitter.configure do |config|
+        config.consumer_key = "gHLlIyBro5vY4WXYwCuoZQ"
+        config.consumer_secret = "cl3jRsFBkWzgF91IUHFQhbudUte1zNOHnfM3J35E"
+        config.oauth_token = self.credentials['token']
+        config.oauth_token_secret = self.credentials['secret']
+      end
+      @twitter_user = Twitter::Client.new() rescue nil
+    end
+    @twitter_user
+  end
   
   include Mongoid::IamAwesome
 end
