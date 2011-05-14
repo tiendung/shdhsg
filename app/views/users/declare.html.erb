@@ -1,8 +1,11 @@
+<div id="declaration_of_awesomeness">
 <%= form_tag(users_declare_path, :method => "post") do %>
-  <%= label_tag(:receiver, "receiver:") %>
-  <%= text_field_tag(:receiver) %>
-  <%= label_tag(:reason, "reason:") %>
-  <%= text_field_tag(:reason) %>
-
-  <%= submit_tag("Submit") %>
+  <%= hidden_field_tag(:count, current_user.credit) %>
+  <p class="warning">You have the power to declare <%= pluralize current_user.credit, "person" %> awesome</p>
+  <h2>The Who and Why of AWESOMENESS</h2>
+  <%= text_area_tag(:reason) %>
+  <p>Declare the awesomeness of</p>
+  <p><span id="receivers"></span></p>
+  <%= image_submit_tag("now.png", :class => 'declare_button') %>
 <% end %>
+</div>

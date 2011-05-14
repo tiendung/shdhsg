@@ -4,3 +4,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){			
+    $("#reason").supertextarea({
+       maxw: 470,
+       maxl: 134
+    });
+    $("#declaration_of_awesomeness textarea").keyup(function(){
+        var usernames = twttr.txt.extractMentions(this.value);
+        c = $("#count").val();
+        if(usernames.length > 0){
+            t = usernames.splice(0,c);
+            $("#receivers").html($.unique(t).join(", "))
+        }
+    });
+})
