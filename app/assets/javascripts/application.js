@@ -6,10 +6,7 @@
 //= require_tree .
 
 $(document).ready(function(){			
-    $("#reason").supertextarea({
-       maxw: 470,
-       maxl: 134
-    });
+    $("#the_order img[title]").tooltip();
     $("#declaration_of_awesomeness textarea").keyup(function(){
         var usernames = twttr.txt.extractMentions(this.value);
         c = $("#count").val();
@@ -17,5 +14,9 @@ $(document).ready(function(){
             t = usernames.splice(0,c);
             $("#receivers").html($.unique(t).join(", "))
         }
+    });
+    $("#reason").supertextarea({
+       maxw: 470,
+       maxl: 134
     });
 })
