@@ -1,0 +1,10 @@
+TODO
+  * Login via Twitter
+  * Get Twitter image given Twitter id
+  * Each user have credit point
+  * After register each user have 3 credit
+  * Each credit point can give one "Like"
+  * The user who "Liked" by a "new" user 2 credits
+  * User cannot Like himself
+  * Can "Like" a user multiple times
+  
