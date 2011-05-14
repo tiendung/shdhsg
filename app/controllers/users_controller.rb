@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     user = User.where(:twitter_id => twitter_id).first || User.new
     user.twitter_id = twitter_id
     user.user_info = auth_hash['user_info']
+    user.credentials = auth_hash['credentials']
     user.save!
     sign_in(User, user)
     redirect_to :root
@@ -22,29 +23,35 @@ class UsersController < ApplicationController
     if request.post? 
       reason = params[:reason]
       
-    #Check and verify the tweet
-    usernames = extract_mentioned_screen_names(params[:receiver])
-    if usernames.nil? || usernames.size ==0
-      flash[:error] = "Invalid input for receivers of awesomeness"
-      redirect_to :root
-    elsif reason.nil? || reason.empty?
-      flash[:error] = "Empty reason for receivers of awesomeness is not allowed"
-      redirect_to :root
-    else
-      receiver = usernames[0]
-      p "Receiver is #{receiver}"
-    
-    
-    #backend calculation
-    
-    #Post the tweet on user's twitter page
-      
-    
-    end 
-    #redirect to main page
-    redirect_to :root
+      #Check and verify the tweet
+      usernames = extract_mentioned_screen_names(reason).uniq
+      if usernames.nil? || usernames.size == 0
+        flash[:error] = "Invalid input for receivers of awesomeness"
+        redirect_to :declare
+      elsif usernames.size > current_user.credit
+        flash[:error] = "You can only give maximum #{current_user.credits} awesomeness to others"
+        redirect_to :declare
+      elsif reason.size > 144
+        flash[:error] = "Message is too long"
+        redirect_to :declare
+      else
+        #backend calculation
+        usernames.each do |receiver|
+          result = current_user.like(receiver, reason)
+          if result == true
+            #Post the tweet on user's twitter page
+            message = reason + " #tooa"
+            current_user.twitter.update(message)
+            #redirect to main page
+            redirect_to :root
+          else
+            flash[:error] = result.to_s.humanize
+            redirect_to :declare
+          end
+        end
+      end 
     elsif request.get?
-      render 'declare'
+      render 'declare'    
     end
   end
   
