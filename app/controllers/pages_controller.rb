@@ -1,5 +1,12 @@
 class PagesController < ApplicationController
   def home
-    @users = User.all 
+    u = User.desc(:awesome).limit(55)
+    @users = []
+    offset = 0
+    1.upto(Settings.pyramid_height).each do |i|
+      line_users = u[offset, i]
+      @users << line_users
+      offset += i
+    end
   end
 end
