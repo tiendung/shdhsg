@@ -4,6 +4,9 @@ gem 'rails', '~> 3.1.0.beta' #, :git => 'https://github.com/rails/rails.git'
 
 # Asset template engines
 gem 'compass'
+# gem 'compass-colors'
+# gem 'compass-960-plugin'
+# gem 'fancy-buttons'
 gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'

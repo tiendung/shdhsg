@@ -3,21 +3,23 @@
  *= require_self
  *= require_tree . 
 */
-
-table {
-  
+#navigation{
+    width: 100%;
 }
-
-tr {
-  
+#header{
+    width: 100%;
+    text-align: center;
 }
-
-td.show {
- border-width: 1px;
- border-color: #000;
- border-style: solid;
- width: 100px; 
- height: 100px;
- color: gray;
- text-align: center;
+#header h1{
+    display: none;
+}
+#main{
+    width: 100%;
+}
+#footer{
+    width: 100%;
+    text-align: center;
+}
+.wrap{
+    
 }
