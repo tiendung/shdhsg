@@ -18,6 +18,7 @@ class User
   field :twitter_handle, :type => String
   field :twitter_oauth_token, :type => String
   field :twitter_oauth_secret, :type => String
+  field :twitter_id
   
   index :twitter_handle, :unique => true
   index [[:twitter_oauth_token, 1], [:twitter_oauth_secret, 1]]
