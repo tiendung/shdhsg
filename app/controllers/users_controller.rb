@@ -31,12 +31,13 @@ class UsersController < ApplicationController
       elsif usernames.size > current_user.credit
         flash[:error] = "You can only give maximum #{current_user.credits} awesomeness to others"
         redirect_to :declare
-      elsif reason.size > 144
+      elsif reason.size > 134
         flash[:error] = "Message is too long"
         redirect_to :declare
       else
         #backend calculation
-        usernames.each do |receiver|
+        usernames.each do |username|
+          receiver = User.where(:twitter_id => username).first
           result = current_user.like(receiver, reason)
           if result == true
             #Post the tweet on user's twitter page
