@@ -20,6 +20,7 @@ gem 'settingslogic'
 gem 'devise'
 gem 'oa-oauth'
 gem 'twitter'
+gem 'twitter-text'
 
 group :development, :test do
   gem 'faker'

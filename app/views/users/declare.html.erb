@@ -1,0 +1,8 @@
+<%= form_tag(users_declare_path, :method => "post") do %>
+  <%= label_tag(:receiver, "receiver:") %>
+  <%= text_field_tag(:receiver) %>
+  <%= label_tag(:reason, "reason:") %>
+  <%= text_field_tag(:reason) %>
+
+  <%= submit_tag("Submit") %>
+<% end %>
