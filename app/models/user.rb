@@ -26,12 +26,13 @@ class User
     lord
   end
   
-  def self.lord
+  def User.lord
     @@lord = User.where(:twitter_id => 'shdhsg').first || create_lord!
   end
   
-  def lord?
-    self == User.lord
+  def admin?
+    self == User.lord ||
+    Settings.dev_team.include?(self.twitter_id)
   end
   
   after_create do
@@ -39,6 +40,7 @@ class User
   end
 
   def update_info_via_twitter(force = false)
+    return if Rails.env.test?
     if force || twitter_id_changed?
       t = Twitter::Client.new.user(twitter_id)
       self.twitter_info = t.to_hash

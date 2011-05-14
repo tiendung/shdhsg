@@ -2,6 +2,11 @@ defaults: &defaults
   # pyramid_height: 20
   default_credit: 2
   default_reason: you attend SuperHappyDevHouseSG
+  dev_team:
+    - kosherjellyfish
+    - tiendung
+    - shinchi
+    - twistedian
   
 development:
   <<: *defaults

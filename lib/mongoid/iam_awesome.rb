@@ -53,7 +53,7 @@ module Mongoid
         return false
       end
       
-      unless self.lord?
+      unless self.admin?
         self.credit -= 1
         self.save
       end

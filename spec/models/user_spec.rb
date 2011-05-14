@@ -6,6 +6,7 @@ describe User do
     @i = User.new; @i.save(:validate => false)
     @u = User.new; @u.save(:validate => false)
     @h = User.new; @h.save(:validate => false)
+    @admin = User.new; @admin.twitter_id = Settings.dev_team.rand; @admin.save(:validate => false)
   end
 
   it 'lord given me an awesomness' do
@@ -65,5 +66,14 @@ describe User do
 
     @u.awesome.should == 4
     @u.credit.should == 6
+  end
+  
+  it 'admin can give unlimited likes' do
+    1.upto(10).each { |i|
+      @admin.like(@u, 'ha ha'*i)
+      @u.awesome.should == 4 + i
+      @u.credit.should == 6 + i
+      @admin.credit.should == 3
+    }
   end
 end
