@@ -1,3 +1,6 @@
+Problem with Rubyracer gem?
+bundle install --without production
+
 TODO
 [ Khoi ]
   * Login via Twitter
@@ -12,5 +15,5 @@ TODO
   * User cannot Like himself
   * When user given a Like his awesomeness creased by one
 
-[ Isaac ]
+[ Isaac,  Jiayuan]
   * Front-end

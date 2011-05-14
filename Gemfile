@@ -14,11 +14,8 @@ gem 'bson_ext'
 gem 'SystemTimer', :platforms => :ruby_18, :require => nil
 
 gem 'settingslogic'
-gem 'inherited_resources'
 gem 'devise'
 gem 'oa-oauth'
-gem 'rack-cache', :require => 'rack/cache'
-gem 'faker'
 
 group :development, :test do
   gem 'faker'
