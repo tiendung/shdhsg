@@ -62,9 +62,6 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.2)
-    dragonfly (0.9.1)
-      rack
-      rack
     erubis (2.7.0)
     execjs (0.3.4)
       multi_json (~> 1.0)
@@ -186,7 +183,6 @@ DEPENDENCIES
   coffee-script
   compass
   devise
-  dragonfly
   fabrication
   faker
   inherited_resources
