@@ -14,5 +14,5 @@ class User
   index :twitter_handle, :unique => true
   index [[:twitter_oauth_token, 1], [:twitter_oauth_secret, 1]]
   
-  include Mongoid::Likeable
+  include Mongoid::IamAwesome
 end

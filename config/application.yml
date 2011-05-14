@@ -1,6 +1,7 @@
 defaults: &defaults
   pyramid_height: 15
-
+  default_credit: 2
+  
 development:
   <<: *defaults
 
