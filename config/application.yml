@@ -6,7 +6,6 @@ defaults: &defaults
   dev_team:
     - kosherjellyfish
     - tiendung
-    - shinchi
     - twistedian
     - riverplatevn
   twitter:

@@ -54,10 +54,10 @@ class UsersController < ApplicationController
               logger.info e
             end
             #redirect to main page
-            redirect_to :root
+            redirect_to :root and return
           else
             flash[:notice] = result.to_s.humanize
-            redirect_to users_declare_path
+            redirect_to users_declare_path and return
           end
         end
       end     
