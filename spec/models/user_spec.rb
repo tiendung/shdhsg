@@ -69,11 +69,21 @@ describe User do
   end
   
   it 'admin can give unlimited likes' do
-    1.upto(10).each { |i|
+    1.upto(100).each { |i|
       @admin.like(@u, 'ha ha'*i)
       @u.awesome.should == 4 + i
       @u.credit.should == 6 + i
       @admin.credit.should == 3
     }
+  end
+
+  it 'I cannot like you too much' do
+    @i.credit = Settings.likes_limit
+    @i.save
+    1.upto(Settings.likes_limit - @i.liked(@u).size).each do |x|
+      @i.like(@u, '$$$'*x)
+    end
+
+    @i.like(@u, '///').should == :reach_limit
   end
 end

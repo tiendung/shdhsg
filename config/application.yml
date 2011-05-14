@@ -2,6 +2,7 @@ defaults: &defaults
   # pyramid_height: 20
   default_credit: 2
   default_reason: you attend SuperHappyDevHouseSG
+  likes_limit: 5
   dev_team:
     - kosherjellyfish
     - tiendung

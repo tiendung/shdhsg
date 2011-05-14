@@ -50,10 +50,11 @@ module Mongoid
       normalize_reason(reason)
       
       return :cannot_like_self if self == other
-      return :no_credits_left if self.credit == 0
       return :cannot_like_for_the_same_reason if liked?(other, reason)
       
-      unless self.admin?
+      if not admin?
+        return :no_credits_left if self.credit == 0
+        return :reach_limit if liked(other).try(:size).to_i >= Settings.likes_limit
         self.credit -= 1
         self.save
       end
