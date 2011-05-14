@@ -11,8 +11,8 @@ module Mongoid
 
     included do
       embeds_many :awesomenesses
-      field :point, :default => 0
-      field :credit, :default => Settings.default_credit
+      field :awesome, :type => Integer, :default => 0
+      field :credit, :type => Integer, :default => Settings.default_credit
     end
     
     module ClassMethods
@@ -51,17 +51,19 @@ module Mongoid
     def like(other, reason)
       normalize_reason(reason)
       
-      if self == other || liked?(other, reason)
+      if self == other || self.credit == 0 || liked?(other, reason)
         return false
       end
       
+      self.credit -= 1
+      self.save
+
       other.awesomenesses << Awesomeness.new(
         :giver_id => self.id,
         :reason => reason
       )
-      other.point += 1
+      other.awesome += 1
       other.save
-      
       other
     end
   end
