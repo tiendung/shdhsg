@@ -6,10 +6,11 @@ TODO
 [ Alex ]
   * Each user have credit point
   * After register each user have 3 credit
-  * Each credit point can give one "Like"
-  * The user who "Liked" by a "new" user 2 credits
+  * Each credit point can give one Like
+  * You Like somebody with a specific reason
+  * Can Like a user multiple times with diff reasons
   * User cannot Like himself
-  * Can "Like" a user multiple times
+  * When user given a Like his awesomeness creased by one
 
 [ Isaac ]
   * Front-end
