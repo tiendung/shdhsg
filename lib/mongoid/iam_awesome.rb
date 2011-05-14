@@ -16,9 +16,6 @@ module Mongoid
       index [:awesome, -1]
     end
     
-    module ClassMethods
-    end
-    
     def normalize_reason(reason)
       return false if reason.blank?
       reason.downcase!
@@ -34,12 +31,12 @@ module Mongoid
     
     # Return Awesomeness or nil
     def liked(other, reason = nil)
+      return nil if other.awesomenesses.blank?
       normalize_reason(reason)
       awesomenesses = []
       other.awesomenesses.each do |awesomeness|
         if awesomeness.giver_id == self.id 
           if reason.present? && awesomeness.reason == reason
-            puts awesomeness.inspect, reason
             return awesomeness
           end
           awesomenesses << awesomeness
@@ -56,14 +53,17 @@ module Mongoid
         return false
       end
       
-      self.credit -= 1
-      self.save
-
+      unless self.lord?
+        self.credit -= 1
+        self.save
+      end
+      
+      other.credit += 1
+      other.awesome += 1
       other.awesomenesses << Awesomeness.new(
         :giver_id => self.id,
         :reason => reason
       )
-      other.awesome += 1
       other.save
       other
     end

@@ -35,7 +35,7 @@ class User
   end
   
   after_create do
-    User.lord.like(self, 'you attend SuperHappyDevHouseSG')
+    User.lord.like(self, Settings.default_reason)
   end
 
   def update_info_via_twitter(force = false)

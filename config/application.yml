@@ -1,6 +1,7 @@
 defaults: &defaults
   # pyramid_height: 20
-  default_credit: 3
+  default_credit: 2
+  default_reason: you attend SuperHappyDevHouseSG
   
 development:
   <<: *defaults
