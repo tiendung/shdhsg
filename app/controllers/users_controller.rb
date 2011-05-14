@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       #Check and verify the tweet
       usernames = extract_mentioned_screen_names(reason).uniq
       if current_user.credit == 0
-        flash[:notice] = "You dont have any credit left, would you like to buy some"
+        flash[:notice] = "You dont have any credit left, would you like to buy some?"
         redirect_to users_declare_path
       elsif usernames.nil? || usernames.size == 0
         flash[:notice] = "Invalid input for receivers of awesomeness"
@@ -52,6 +52,7 @@ class UsersController < ApplicationController
               current_user.twitter.update(message)
             rescue => e
               logger.info e
+              redirect_to :root
             end
             #redirect to main page
             redirect_to :root
