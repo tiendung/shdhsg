@@ -6,7 +6,7 @@
 		<li>
 			<% line.each do |u| %>
 				<div>
-					<%= link_to image_tag(u.try(:avatar_url), :title=>u.twitter_id), "http://twitter.com/#{u.twitter_id}" %>
+					<%= link_to image_tag(u.try(:avatar_url), :title=>"#{u.twitter_id} has #{u.awesome} awesome declarations"), "http://twitter.com/#{u.twitter_id}" %>
 				</div>
 			<% end %>
 		</li>

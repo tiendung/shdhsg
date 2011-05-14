@@ -119,3 +119,24 @@ body{
     padding: 5px;
     opacity: 0.9;
 }
+#flash_info{
+    text-align: center;
+    background: #520000;
+    color: #FFFFFF;
+}
+#buy{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px;
+    background: #990303;
+    color: #FFFFFF;
+}
+#buy a{
+    color: #FFFFFF;
+}
+#buy_awesomeness{
+    text-align: center;
+}
+#buy_awesomeness h2{
+    
+}

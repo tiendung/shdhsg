@@ -52,7 +52,6 @@ class UsersController < ApplicationController
               current_user.twitter.update(message)
             rescue => e
               logger.info e
-              redirect_to :root
             end
             #redirect to main page
             redirect_to :root

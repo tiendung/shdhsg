@@ -2,6 +2,9 @@
 <%= form_tag(users_declare_path, :method => "post") do %>
   <%= hidden_field_tag(:count, current_user.credit) %>
   <p class="warning">You have the power to declare <%= pluralize current_user.credit, "person" %> awesome</p>
+  <% if current_user.credit == 0 %>
+  <p id="buy">Your power level is low. <%= link_to "Buy credits", buy_awesomeness_path %> so that you can declare others to be awesome</p>
+  <% end %>
   <h2>The Who and Why of AWESOMENESS</h2>
   <%= text_area_tag(:reason) %>
   <p>Declare the awesomeness of</p>
