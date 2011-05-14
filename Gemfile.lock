@@ -111,7 +111,6 @@ GEM
       faraday (~> 0.6.1)
       multi_json (>= 0.0.5)
     orm_adapter (0.0.5)
-    pg (0.11.0)
     polyglot (0.3.1)
     rack (1.3.0.beta)
     rack-cache (1.0.1)
@@ -195,7 +194,6 @@ DEPENDENCIES
   mongoid!
   mongoid-rspec
   oa-oauth
-  pg
   rack-cache
   rails (~> 3.1.0.beta)
   remarkable_mongoid
