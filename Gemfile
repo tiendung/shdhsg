@@ -9,7 +9,7 @@ gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
 
-gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git'
+gem 'mongoid', :path => 'vendor/gems/mongoid'
 gem 'bson_ext'
 gem 'SystemTimer', :platforms => :ruby_18, :require => nil
 
