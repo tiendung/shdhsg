@@ -5,6 +5,13 @@
 */
 #navigation{
     width: 100%;
+    text-align: right;
+    background: #520000;
+    padding: 5px 0px 0px 0px;
+}
+#navigation img{
+    padding: 0px;
+    margin: 0px;
 }
 #header{
     width: 100%;
@@ -19,6 +26,17 @@
 #footer{
     width: 100%;
     text-align: center;
+    background: #211F1C;
+    padding: 10px 0px 10px 0px;
+}
+#footer p{
+    margin: 0px;
+    padding: 0px;
+    color: #FFFFFF;
+}
+#footer a{
+    margin: 0px 5px 0px 5px;
+    color: #D2560E;
 }
 .wrap{
     
