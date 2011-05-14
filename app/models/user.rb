@@ -11,8 +11,20 @@ class User
   devise :database_authenticatable, :rememberable, :omniauthable, :trackable
   
   field :user_info, :type => Hash
+  field :twitter_info, :type => Hash
   field :twitter_id
+  field :avatar_url
   validates_presence_of :twitter_id
+  
+  before_save :update_info_via_twitter
 
+  def update_info_via_twitter(force = false)
+    if force || twitter_id_changed?
+      t = Twitter::Client.new.user(twitter_id)
+      twitter_info = t.to_hash
+      self.avatar_url = t.profile_image_url
+    end
+  end
+  
   include Mongoid::IamAwesome
 end

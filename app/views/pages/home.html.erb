@@ -3,11 +3,9 @@
   <% 1.upto(Settings.pyramid_height).each do |i| %>
     <tr>
       <% 1.upto(Settings.pyramid_height).each do |j| %>
-        <td class="<%= j <= i ? 'show' : 'hide' %>">
-          <% if j <= i; count += 1 %>
-            <%#= "#{count}" %>
-            <%= "@#{User.all[count - 1].twitter_id[0..10]}" if count - 1 < User.count %>
-          <% end %>
+        <% user = nil; if j <= i; count += 1; user = @users[count - 1]; end %>
+        <td class="<%= j <= i ? 'show' : 'hide' %>" style="background-image: url(<%= user.try(:avatar_url) %>); background-repeat: none;">
+          <%= "@#{user.twitter_id[0..10]}" if user %>
         </td>
       <% end %>
     </tr>

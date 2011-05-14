@@ -16,6 +16,7 @@ gem 'SystemTimer', :platforms => :ruby_18, :require => nil
 gem 'settingslogic'
 gem 'devise'
 gem 'oa-oauth'
+gem 'twitter'
 
 group :development, :test do
   gem 'faker'
