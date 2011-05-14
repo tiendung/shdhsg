@@ -3,7 +3,7 @@
   <% 1.upto(Settings.pyramid_height).each do |i| %>
     <tr>
       <% 1.upto(Settings.pyramid_height).each do |j| %>
-        <td>
+        <td class="<%= j <= i ? 'show' : 'hide' %>">
           <% if j <= i; count += 1 %>
             <%= "#{count}" %>
           <% end %>
