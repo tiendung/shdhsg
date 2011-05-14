@@ -176,6 +176,8 @@ GEM
       multi_xml (~> 0.2.0)
       rash (~> 0.3.0)
       simple_oauth (~> 0.1.4)
+    twitter-text (1.4.2)
+      actionpack
     tzinfo (0.3.27)
     uglifier (0.5.3)
       execjs (>= 0.3.0)
@@ -206,4 +208,5 @@ DEPENDENCIES
   therubyracer-heroku (= 0.8.1.pre3)
   turn
   twitter
+  twitter-text
   uglifier

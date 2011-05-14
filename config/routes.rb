@@ -3,6 +3,7 @@ Shdhsg::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users" }
   root :to => 'pages#home'
 
+  match 'users/declare' => 'users#declare'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

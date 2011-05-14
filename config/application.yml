@@ -7,6 +7,9 @@ defaults: &defaults
     - tiendung
     - shinchi
     - twistedian
+  twitter:
+    key: gHLlIyBro5vY4WXYwCuoZQ
+    secret: cl3jRsFBkWzgF91IUHFQhbudUte1zNOHnfM3J35E
   
 development:
   <<: *defaults
