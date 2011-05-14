@@ -1,0 +1,15 @@
+/*
+ * FIXME: Introduce SCSS & Sprockets
+ *= require_self
+ *= require_tree . 
+*/
+/* line 15, ../../app/assets/stylesheets/application.scss */
+td.show {
+  border-width: 1px;
+  border-color: #000;
+  border-style: solid;
+  width: 100px;
+  height: 100px;
+  color: gray;
+  text-align: center;
+}
