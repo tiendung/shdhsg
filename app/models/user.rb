@@ -36,9 +36,9 @@ class User
     Settings.dev_team.include?(self.twitter_id)
   end
   
-  after_create do
-    User.lord.like(self, Settings.default_reason)
-  end
+  # after_create do
+  #   User.lord.like(self, Settings.default_reason)
+  # end
 
   def update_info_via_twitter(force = false)
     return if Rails.env.test?
