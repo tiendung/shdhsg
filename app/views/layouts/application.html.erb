@@ -7,6 +7,7 @@
   <%= stylesheet_link_tag    "960" %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <script src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
   <%= javascript_include_tag "twitter-text" %>
   <%= javascript_include_tag "jquery.supertextarea.min" %>
   <%= csrf_meta_tags %>
@@ -20,7 +21,7 @@
 <div id="header">
 	<div class="wrap container_16">
 		<h1>The Order of Awesomeness</h1>
-		<%= link_to image_tag("the_order_of_awesomeness_06.png"), '/' %>
+		<%= link_to image_tag("the_order_of_awesomeness_06.png"), root_url %>
 	</div>
 </div>
 <div id="main">
