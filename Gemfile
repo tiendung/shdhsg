@@ -19,6 +19,7 @@ gem 'devise'
 gem 'oa-oauth'
 gem 'dragonfly'
 gem 'rack-cache', :require => 'rack/cache'
+gem 'faker'
 
 group :development, :test do
   gem 'faker'
@@ -31,4 +32,9 @@ group :test do
   gem 'rspec-rails', :require => false
   gem 'mongoid-rspec'
   gem 'remarkable_mongoid', :require => 'remarkable/mongoid'
+end
+
+group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+  gem 'pg'
 end
