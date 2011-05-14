@@ -13,10 +13,7 @@ module Mongoid
       embeds_many :awesomenesses
       field :awesome, :type => Integer, :default => 0
       field :credit, :type => Integer, :default => Settings.default_credit
-      index [:awesome, -1]
-    end
-    
-    module ClassMethods
+      index [[:awesome, -1]]
     end
     
     def normalize_reason(reason)
@@ -34,12 +31,12 @@ module Mongoid
     
     # Return Awesomeness or nil
     def liked(other, reason = nil)
+      return nil if other.awesomenesses.blank?
       normalize_reason(reason)
       awesomenesses = []
       other.awesomenesses.each do |awesomeness|
         if awesomeness.giver_id == self.id 
           if reason.present? && awesomeness.reason == reason
-            puts awesomeness.inspect, reason
             return awesomeness
           end
           awesomenesses << awesomeness
@@ -52,20 +49,23 @@ module Mongoid
     def like(other, reason)
       normalize_reason(reason)
       
-      if self == other || self.credit == 0 || liked?(other, reason)
-        return false
+      return :cannot_like_self if self == other
+      return :no_credits_left if self.credit == 0
+      return :cannot_like_for_the_same_reason if liked?(other, reason)
+      
+      unless self.admin?
+        self.credit -= 1
+        self.save
       end
       
-      self.credit -= 1
-      self.save
-
+      other.credit += 1
+      other.awesome += 1
       other.awesomenesses << Awesomeness.new(
         :giver_id => self.id,
         :reason => reason
       )
-      other.awesome += 1
       other.save
-      other
+      true
     end
   end
 end
