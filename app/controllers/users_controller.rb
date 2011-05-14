@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       elsif usernames.size > current_user.credit
         flash[:error] = "You can only give maximum #{current_user.credits} awesomeness to others"
         redirect_to :declare
-      elsif reason.size > 144
+      elsif reason.size > 134
         flash[:error] = "Message is too long"
         redirect_to :declare
       else
