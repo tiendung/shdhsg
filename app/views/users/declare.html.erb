@@ -6,7 +6,7 @@
   <p id="buy">Your power level is low. <%= link_to "Buy credits", buy_awesomeness_path %> so that you can declare others to be awesome</p>
   <% end %>
   <h2>The Who and Why of AWESOMENESS</h2>
-  <%= text_area_tag(:reason) %>
+  <%= text_area_tag(:reason, params[:tid] ? "@#{params[:tid]} is awesome because " : "") %>
   <p>Declare the awesomeness of</p>
   <p><span id="receivers"></span></p>
   <%= image_submit_tag("now.png", :class => 'declare_button') %>

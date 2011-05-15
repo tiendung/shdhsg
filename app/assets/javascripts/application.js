@@ -15,8 +15,23 @@ $(document).ready(function(){
             $("#receivers").html($.unique(t).join(", "))
         }
     });
+
     $("#reason").supertextarea({
        maxw: 470,
        maxl: 134
     });
-})
+
+    // http://plugins.jquery.com/content/cursor-position
+    /* focus to first visible form element */
+    $("#reason").focus();
+    /* Set the cursor position to the end. Needed for non-Mozilla browsers */
+    var caretPos = $("#reason").val().length;
+    if($("#reason")[0].createTextRange) { /* For IE */
+        var range = $("#reason")[0].createTextRange();
+        range.move('character', caretPos);
+        range.select();
+    }
+    else { /* For other browsers */
+        $("#reason")[0].setSelectionRange(caretPos, caretPos);
+    }
+});
