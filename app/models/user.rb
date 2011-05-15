@@ -8,7 +8,7 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, 
   # :lockable, :timeoutable and :omniauthable, :trackable
-  devise :database_authenticatable, :rememberable, :omniauthable, :trackable
+  devise :database_authenticatable, :rememberable, :omniauthable, :trackable, :timeoutable
   
   field :user_info, :type => Hash
   field :twitter_info, :type => Hash
