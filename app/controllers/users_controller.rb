@@ -5,12 +5,13 @@ class UsersController < ApplicationController
   def twitter
     auth_hash = request.env['omniauth.auth']
     twitter_id = auth_hash['user_info']['nickname']
-    user = User.where(:twitter_id => twitter_id).first || User.new
+    user = User.first(:conditions => { :twitter_id => twitter_id }) || User.new
     user.twitter_id = twitter_id
     user.user_info = auth_hash['user_info']
     user.credentials = auth_hash['credentials']
     user.save!
     sign_in(User, user)
+    request.env['omniauth.auth'] = nil
     redirect_to :root
   end
   
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
       else
         #backend calculation
         usernames.each do |username|
-          receiver = User.where(:twitter_id => username).first || User.new
+          receiver = User.first(:conditions => { :twitter_id => username }) || User.new
           receiver.twitter_id = username
           receiver.save(:validate => false)
           

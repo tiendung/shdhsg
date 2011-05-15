@@ -16,6 +16,7 @@ class User
   field :avatar_url
   field :credentials, :type => Hash
   validates_presence_of :twitter_id
+  validates_uniqueness_of :twitter_id
   
   before_save :update_info_via_twitter
 

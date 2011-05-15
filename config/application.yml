@@ -5,7 +5,6 @@ defaults: &defaults
   likes_limit: 5
   dev_team:
     - kosherjellyfish
-    - tiendung
     - twistedian
     - riverplatevn
   twitter:
