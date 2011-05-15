@@ -140,3 +140,13 @@ body{
 #buy_awesomeness h2{
     
 }
+
+div.declare-him {
+  font-size: 0.9em;
+  text-align: center;
+  color: #ddd;
+}
+
+div.declare-him a {
+  color: #ddd;
+}
